@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>import notes — Python Libraries for Freshers</title>
+  
+  <!-- External Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- External JS (defer ensures script loads after DOM is ready) -->
+  <script src="js/app.js" defer></script>
+</head>
+
+<div id="progress"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="bracket">import</span>&nbsp;notes<span class="bracket">;</span></div>
+    <nav class="pills" id="pills">
+      <a href="#home" class="pill active" data-c="var(--pandas)">Home</a>
+      <a href="#numpy" class="pill" data-c="var(--numpy)">NumPy</a>
+      <a href="#pandas" class="pill" data-c="var(--pandas)">Pandas</a>
+      <a href="#matplotlib" class="pill" data-c="var(--matplotlib)">Matplotlib</a>
+      <a href="#seaborn" class="pill" data-c="var(--seaborn)">Seaborn</a>
+      <a href="#compare" class="pill" data-c="var(--ink)">Cheat Sheet</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<div id="home"></div>
+<section class="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="hero-blob b3"></div>
+  <div class="hero-blob b4"></div>
+  <div class="hero-float f1">{ }</div>
+  <div class="hero-float f2">[ ]</div>
+  <div class="hero-float f3">Σ</div>
+  <div class="hero-float f4">df</div>
+
+  <div>
+    <div class="eyebrow"><span class="dot"></span>Zero prior experience needed</div>
+    <h1>Learn the four Python libraries every <span class="hl">fresher</span> gets asked about.</h1>
+    <p class="lead">NumPy, Pandas, Matplotlib and Seaborn — explained in plain English, with real-world analogies, runnable-looking code, and a "click Run" notebook feel. Built like an actual data notebook, not a textbook.</p>
+    <div class="hero-ctas">
+      <a href="#numpy" class="btn btn-primary">Start with NumPy →</a>
+      <a href="#compare" class="btn btn-ghost">See the cheat sheet</a>
+    </div>
+  </div>
+  <div class="term">
+    <div class="term-bar"><span></span><span></span><span></span></div>
+    <div class="term-body">
+      <div class="prompt">In [1]:</div>
+      <div id="typewriter"></div><span class="term-cursor">&nbsp;</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTRO / TOOLBOX ============ -->
+<section class="intro reveal">
+  <h2>Think of it as one toolbox, four tools</h2>
+  <p>Every data task — count something, organize something, or picture something — needs one of these four. Learn what each one is <em>for</em> first, and the syntax stops feeling random.</p>
+  <div class="toolbox" id="toolbox">
+    <div class="tool-card" style="--tc:var(--numpy);"><div class="ic">np</div><h4>NumPy</h4><p>The calculator. Fast math on big grids of numbers.</p><span class="sticker" style="font-size:11px;padding:4px 10px;">⚡ Fastest</span></div>
+    <div class="tool-card" style="--tc:var(--pandas);"><div class="ic">pd</div><h4>Pandas</h4><p>The spreadsheet. Organizes and filters labeled data.</p><span class="sticker" style="font-size:11px;padding:4px 10px;">📊 Most used</span></div>
+    <div class="tool-card" style="--tc:var(--matplotlib);"><div class="ic">plt</div><h4>Matplotlib</h4><p>The canvas. Draws any chart you can describe.</p><span class="sticker" style="font-size:11px;padding:4px 10px;">🎨 Flexible</span></div>
+    <div class="tool-card" style="--tc:var(--seaborn);"><div class="ic">sns</div><h4>Seaborn</h4><p>The stylist. Makes statistical charts look great, fast.</p><span class="sticker" style="font-size:11px;padding:4px 10px;">✨ Prettiest</span></div>
+  </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============ NUMPY ============ -->
+<!-- ============================================================ -->
+<section id="numpy" class="lib-section reveal" style="--accent:var(--numpy);">
+  <div class="lib-head">
+    <div class="lib-badge">np</div>
+    <div>
+      <h2>NumPy</h2>
+      <div class="lib-tagline">Numerical Python — fast math on grids of numbers</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>What it actually is</h3>
+      <p>NumPy gives Python a new data container called an <b>array</b> — a grid that holds only numbers, all of the same type. Because every slot is identical, NumPy can do math on the <em>entire grid at once</em>, using code written in C under the hood — which makes it dramatically faster than a normal Python list.</p>
+    </div>
+    <div class="card analogy">
+      <h3>Real-world analogy</h3>
+      <p>A NumPy array is a <b>muffin tray</b>. Every slot is exactly the same size and holds the same kind of thing. Want to add one chocolate chip to every muffin? You do it to the whole tray in one move — you don't visit each slot separately. That's what <code>arr + 1</code> does to every number in an array.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:8px;">Where it's used</h3>
+  <div class="where-used">
+    <span class="chip">Machine learning (behind pandas &amp; scikit-learn)</span>
+    <span class="chip">Image processing (an image is a grid of pixel numbers)</span>
+    <span class="chip">Scientific &amp; engineering calculations</span>
+    <span class="chip">Finance &amp; simulations</span>
+  </div>
+
+  <div class="sub-label">Core types</div>
+  <div class="types-grid">
+    <div class="type-card"><div class="tt">1D array</div><p>A single row of numbers: <code>[4, 8, 15]</code>. Like one line of a muffin tray.</p></div>
+    <div class="type-card"><div class="tt">2D array</div><p>Rows &amp; columns, like a full spreadsheet grid: <code>[[1,2],[3,4]]</code>.</p></div>
+    <div class="type-card"><div class="tt">3D+ array</div><p>A stack of grids — e.g. a color photo (height × width × RGB).</p></div>
+  </div>
+
+  <div class="sub-label">Syntax &amp; methods — click Run to see the output</div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [1]:</div>
+      <div class="cell-code"><pre><span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="com"># create an array from a list</span>
+arr = np.<span class="fn">array</span>([<span class="num">4</span>, <span class="num">8</span>, <span class="num">15</span>, <span class="num">16</span>])
+<span class="fn">print</span>(arr.shape)</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[1]:</div>
+      <div class="out-content">(4,)  <span class="com">&nbsp;# 4 numbers, in one row</span></div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [2]:</div>
+      <div class="cell-code"><pre><span class="com"># do math on the WHOLE array at once — no loop needed</span>
+prices = np.<span class="fn">array</span>([<span class="num">100</span>, <span class="num">250</span>, <span class="num">80</span>])
+discounted = prices * <span class="num">0.9</span>   <span class="com"># 10% off, every item</span>
+<span class="fn">print</span>(discounted)</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[2]:</div>
+      <div class="out-content">[90.  225.  72.]</div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [3]:</div>
+      <div class="cell-code"><pre><span class="com"># build arrays without typing every number</span>
+grid = np.<span class="fn">zeros</span>((<span class="num">2</span>, <span class="num">3</span>))       <span class="com"># 2 rows, 3 columns, all 0</span>
+steps = np.<span class="fn">arange</span>(<span class="num">0</span>, <span class="num">10</span>, <span class="num">2</span>)   <span class="com"># start, stop, step</span>
+<span class="fn">print</span>(grid)
+<span class="fn">print</span>(steps)</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[3]:</div>
+      <div class="out-content">[[0. 0. 0.]
+ [0. 0. 0.]]
+[0 2 4 6 8]</div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [4]:</div>
+      <div class="cell-code"><pre><span class="com"># quick stats — no loop needed</span>
+scores = np.<span class="fn">array</span>([<span class="num">72</span>, <span class="num">88</span>, <span class="num">91</span>, <span class="num">60</span>])
+<span class="fn">print</span>(<span class="str">"mean:"</span>, scores.<span class="fn">mean</span>(), <span class="str">"| max:"</span>, scores.<span class="fn">max</span>())</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[4]:</div>
+      <div class="out-content">mean: 77.75 | max: 91</div>
+    </div></div>
+  </div>
+
+  <div class="tip"><b>Fresher tip:</b> if you're doing math on a list of numbers and reaching for a <code>for</code> loop, stop — that's almost always a sign you want a NumPy array instead.</div>
+
+  <div class="trivia"><span class="emoji">💡</span><div><b>Good to know:</b> "NumPy" is short for <b>Num</b>erical <b>Py</b>thon. It was first released in 2006, and its array object (<code>ndarray</code>) is the shared foundation that Pandas, Matplotlib, and most machine-learning libraries are built on top of — learning it well makes the other three easier.</div></div>
+
+  <div class="quickcheck">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-face flip-front"><span class="lbl">QUICK CHECK</span><p>Why is a NumPy array faster than a plain Python list for math?</p></div>
+        <div class="flip-face flip-back"><span class="lbl">ANSWER</span><p>Because every element is the same fixed type, so NumPy can run the operation on the whole block of memory at once, in optimized C code, instead of Python checking each item one by one.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-block">
+    <h3 class="quiz-title">🧠 Quick Quiz — NumPy</h3>
+    <div class="quiz-q" data-answer="1" data-reason="NumPy's whole purpose is fast, memory-efficient math on arrays — plotting is Matplotlib's job, and reading files is Pandas' job.">
+      <p class="qtext">1. What is NumPy mainly used for?</p>
+      <div class="qopts">
+        <button class="qopt">Drawing charts</button>
+        <button class="qopt">Fast numerical operations on arrays</button>
+        <button class="qopt">Reading CSV files</button>
+        <button class="qopt">Web scraping</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="np.zeros(shape) fills a new array of that shape with 0s; np.ones() would fill with 1s, and np.arange() generates a sequence, not a filled grid.">
+      <p class="qtext">2. Which function creates an array of zeros with 2 rows and 3 columns?</p>
+      <div class="qopts">
+        <button class="qopt">np.ones((2,3))</button>
+        <button class="qopt">np.zeros((2,3))</button>
+        <button class="qopt">np.arange(2,3)</button>
+        <button class="qopt">np.array(2,3)</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason=".shape returns a tuple describing how many elements exist along each dimension — e.g. (2,3) means 2 rows and 3 columns.">
+      <p class="qtext">3. What does <code>arr.shape</code> tell you?</p>
+      <div class="qopts">
+        <button class="qopt">The data type of elements</button>
+        <button class="qopt">The dimensions (rows, columns) of the array</button>
+        <button class="qopt">The sum of all elements</button>
+        <button class="qopt">The memory address</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="2" data-reason="NumPy 'broadcasts' the scalar across every element automatically — this whole-array operation is the main reason NumPy beats a plain Python loop for speed.">
+      <p class="qtext">4. In <code>arr * 2</code> where <code>arr = np.array([1,2,3])</code>, what happens?</p>
+      <div class="qopts">
+        <button class="qopt">Error, can't multiply array by int</button>
+        <button class="qopt">Only the first element is multiplied</button>
+        <button class="qopt">Every element gets multiplied by 2</button>
+        <button class="qopt">The array is duplicated twice</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="A 2D array needs nested lists — rows inside a list — like [[1,2],[3,4]]. The other options are either 1D or not a valid array input.">
+      <p class="qtext">5. Which of these is a valid 2D NumPy array?</p>
+      <div class="qopts">
+        <button class="qopt">np.array([1,2,3])</button>
+        <button class="qopt">np.array([[1,2],[3,4]])</button>
+        <button class="qopt">np.array("1,2,3")</button>
+        <button class="qopt">np.zeros(3)</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+  </div>
+
+  <div class="complete-wrap"><button class="complete-btn" onclick="markComplete(this,'numpy')">🎯 Mark NumPy as learned</button></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============ PANDAS ============ -->
+<!-- ============================================================ -->
+<section id="pandas" class="lib-section reveal" style="--accent:var(--pandas);">
+  <div class="lib-head">
+    <div class="lib-badge">pd</div>
+    <div>
+      <h2>Pandas</h2>
+      <div class="lib-tagline">Labeled tables for organizing &amp; analyzing data</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>What it actually is</h3>
+      <p>Pandas is built on top of NumPy and adds <b>labels</b> — row names and column names — to your data, so instead of a nameless grid of numbers, you get a table you can query by name, just like a spreadsheet, but scriptable and repeatable.</p>
+    </div>
+    <div class="card analogy">
+      <h3>Real-world analogy</h3>
+      <p>A pandas DataFrame is your <b>class attendance register</b>. Each row is one student, each column is a subject, and every cell is clearly labeled — so you always know "Rahul's Math score" instantly, instead of counting rows and columns by hand.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:8px;">Where it's used</h3>
+  <div class="where-used">
+    <span class="chip">Cleaning messy datasets</span>
+    <span class="chip">Reading CSV / Excel files</span>
+    <span class="chip">Business &amp; sales reporting</span>
+    <span class="chip">Preparing data for ML models</span>
+  </div>
+
+  <div class="sub-label">Core types</div>
+  <div class="types-grid">
+    <div class="type-card"><div class="tt">Series</div><p>One labeled column — a single subject's marks for every student.</p></div>
+    <div class="type-card"><div class="tt">DataFrame</div><p>The full table — rows × columns, like the whole register.</p></div>
+    <div class="type-card"><div class="tt">Index</div><p>The row labels — e.g. student roll numbers or names.</p></div>
+  </div>
+
+  <div class="sub-label">Syntax &amp; methods — click Run to see the output</div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [1]:</div>
+      <div class="cell-code"><pre><span class="kw">import</span> pandas <span class="kw">as</span> pd
+
+data = {<span class="str">"name"</span>: [<span class="str">"Asha"</span>, <span class="str">"Ravi"</span>, <span class="str">"Meera"</span>],
+        <span class="str">"marks"</span>: [<span class="num">88</span>, <span class="num">72</span>, <span class="num">95</span>]}
+df = pd.<span class="fn">DataFrame</span>(data)
+df.<span class="fn">head</span>()</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[1]:</div>
+      <div class="out-content"><table class="out-table"><tr><th></th><th>name</th><th>marks</th></tr>
+      <tr><td>0</td><td>Asha</td><td>88</td></tr><tr><td>1</td><td>Ravi</td><td>72</td></tr><tr><td>2</td><td>Meera</td><td>95</td></tr></table></div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [2]:</div>
+      <div class="cell-code"><pre><span class="com"># select a column, and filter rows by a condition</span>
+top_scorers = df[df[<span class="str">"marks"</span>] &gt; <span class="num">80</span>]
+<span class="fn">print</span>(top_scorers)</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[2]:</div>
+      <div class="out-content">    name  marks
+0   Asha     88
+2  Meera     95</div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [3]:</div>
+      <div class="cell-code"><pre><span class="com"># loc = select by label, iloc = select by position</span>
+<span class="fn">print</span>(df.loc[<span class="num">0</span>, <span class="str">"name"</span>])   <span class="com"># row labeled 0, column "name"</span>
+<span class="fn">print</span>(df.iloc[<span class="num">0</span>, <span class="num">1</span>])       <span class="com"># 1st row, 2nd column, by position</span></pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[3]:</div>
+      <div class="out-content">Asha
+88</div>
+    </div></div>
+  </div>
+
+  <div class="cell">
+    <div class="cell-row">
+      <div class="cell-io">In [4]:</div>
+      <div class="cell-code"><pre><span class="com"># group rows and summarize — like a pivot table</span>
+sales = pd.<span class="fn">DataFrame</span>({<span class="str">"city"</span>: [<span class="str">"Pune"</span>,<span class="str">"Pune"</span>,<span class="str">"Delhi"</span>],
+                       <span class="str">"revenue"</span>: [<span class="num">200</span>, <span class="num">300</span>, <span class="num">150</span>]})
+<span class="fn">print</span>(sales.<span class="fn">groupby</span>(<span class="str">"city"</span>)[<span class="str">"revenue"</span>].<span class="fn">sum</span>())</pre></div>
+    </div>
+    <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+    <div class="out-wrap"><div class="cell-out cell-row">
+      <div class="cell-io">Out[4]:</div>
+      <div class="out-content">city
+Delhi    150
+Pune     500
+Name: revenue, dtype: int64</div>
+    </div></div>
+  </div>
+
+  <div class="tip"><b>Fresher tip:</b> real data is messy. <code>df.isna().sum()</code> tells you how many blanks are hiding in each column before you trust any analysis.</div>
+
+  <div class="sub-label" style="margin-top:44px;">Cleaning data — handling empty cells <span class="sticker r2" style="margin-left:10px;">🧹 Very common in interviews</span></div>
+  <p style="color:var(--ink-soft);font-size:14.5px;max-width:78ch;margin-bottom:18px;">Real datasets almost always have missing values — an empty mark, a blank name. Left alone, empty cells can quietly skew an average or break a calculation. Pandas gives you a few simple methods to find and handle them, shown individually below.</p>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">isna()</span></div>
+    <p class="def">Checks every cell and returns <code>True</code> where a value is missing. Almost always paired with <code>.sum()</code> to count blanks per column — the first thing to check before trusting any analysis.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">DataFrame.isna()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [5]:</div>
+      <div class="cell-code"><pre><span class="fn">print</span>(df.<span class="fn">isna</span>().<span class="fn">sum</span>())   <span class="com"># how many blanks per column?</span></pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[5]:</div>
+        <div class="out-content">name     0
+marks    1
+dtype: int64</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">dropna()</span></div>
+    <p class="def">Removes rows that contain at least one empty cell, and returns a brand-new DataFrame. This is usually safe when your dataset is large — losing a handful of rows out of thousands rarely changes the result much.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">DataFrame.dropna()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [6]:</div>
+      <div class="cell-code"><pre><span class="com"># returns a NEW DataFrame with the empty-cell rows removed</span>
+clean_df = df.<span class="fn">dropna</span>()
+<span class="fn">print</span>(clean_df)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[6]:</div>
+        <div class="out-content">    name  marks
+0   Asha   88.0
+2  Meera   95.0</div>
+      </div></div>
+    </div>
+    <div class="note"><b>Note:</b> by default <code>dropna()</code> does <b>not</b> touch the original <code>df</code> — it hands you a new, cleaned copy. If you want the original DataFrame itself to change, add <code>inplace=True</code>, as shown next.</div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">dropna(inplace=True)</span></div>
+    <p class="def">Same job as <code>dropna()</code>, except it edits the original DataFrame directly instead of returning a copy — there's nothing to reassign afterwards.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">DataFrame.dropna(inplace=True)</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [7]:</div>
+      <div class="cell-code"><pre>df.<span class="fn">dropna</span>(inplace=<span class="kw">True</span>)  <span class="com"># changes df itself, returns None</span>
+<span class="fn">print</span>(df)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[7]:</div>
+        <div class="out-content">    name  marks
+0   Asha   88.0
+2  Meera   95.0</div>
+      </div></div>
+    </div>
+    <div class="note"><b>Note:</b> with <code>inplace=True</code>, the method returns <code>None</code> — don't write <code>df = df.dropna(inplace=True)</code>, or you'll accidentally wipe out <code>df</code> entirely.</div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">fillna()</span></div>
+    <p class="def">Instead of deleting rows, this fills every empty cell with a value you choose — useful when you can't afford to lose rows, e.g. replacing a missing mark with the class average.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">DataFrame.fillna(value)</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [8]:</div>
+      <div class="cell-code"><pre>avg = df[<span class="str">"marks"</span>].<span class="fn">mean</span>()
+df[<span class="str">"marks"</span>] = df[<span class="str">"marks"</span>].<span class="fn">fillna</span>(avg)   <span class="com"># fill blanks with the average</span>
+<span class="fn">print</span>(df)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[8]:</div>
+        <div class="out-content">    name  marks
+0   Asha   88.0
+1   Ravi   85.0
+2  Meera   95.0</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">drop_duplicates()</span></div>
+    <p class="def">Removes rows that are exact repeats of an earlier row — handy when the same record accidentally got entered twice (e.g. a student submitted the same form twice).</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">DataFrame.drop_duplicates()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [9]:</div>
+      <div class="cell-code"><pre>df.<span class="fn">drop_duplicates</span>(inplace=<span class="kw">True</span>)
+<span class="fn">print</span>(df)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[9]:</div>
+        <div class="out-content">    name  marks
+0   Asha   88.0
+1   Ravi   85.0
+2  Meera   95.0</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="trivia"><span class="emoji">💡</span><div><b>Good to know:</b> the name "Pandas" comes from <b>"Panel Data"</b>, an econometrics term for datasets that track many subjects over multiple time periods — exactly the kind of table Pandas was built to handle.</div></div>
+
+  <div class="quickcheck">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-face flip-front"><span class="lbl">QUICK CHECK</span><p>What's the difference between <code>df.loc[]</code> and <code>df.iloc[]</code>?</p></div>
+        <div class="flip-face flip-back"><span class="lbl">ANSWER</span><p><code>.loc</code> selects by label/name (e.g. row named "Asha"), <code>.iloc</code> selects by numeric position (e.g. the 1st row), no matter what the labels are.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-block">
+    <h3 class="quiz-title">🧠 Quick Quiz — Pandas</h3>
+    <div class="quiz-q" data-answer="1" data-reason="A DataFrame is Pandas' core structure — a table with labeled rows (index) and columns, much like a spreadsheet.">
+      <p class="qtext">1. What is a DataFrame?</p>
+      <div class="qopts">
+        <button class="qopt">A single column of data</button>
+        <button class="qopt">A 2D labeled table of rows and columns</button>
+        <button class="qopt">A type of chart</button>
+        <button class="qopt">A NumPy function</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="pd.read_csv('file.csv') is the standard method for loading a CSV into a DataFrame; the other function names don't exist in Pandas.">
+      <p class="qtext">2. Which method reads a CSV file into a DataFrame?</p>
+      <div class="qopts">
+        <button class="qopt">pd.load_csv()</button>
+        <button class="qopt">pd.read_csv()</button>
+        <button class="qopt">pd.open_csv()</button>
+        <button class="qopt">pd.import_csv()</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="By default dropna() returns a fresh copy with the empty-cell rows removed — the original df stays untouched unless you pass inplace=True.">
+      <p class="qtext">3. What does <code>df.dropna()</code> do by default?</p>
+      <div class="qopts">
+        <button class="qopt">Deletes the original DataFrame</button>
+        <button class="qopt">Returns a new DataFrame with empty-cell rows removed</button>
+        <button class="qopt">Fills empty cells with 0</button>
+        <button class="qopt">Deletes all columns</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="2" data-reason=".iloc[] is strictly position-based (0,1,2…); .loc[] uses the row's label/name instead, which may not even be a number.">
+      <p class="qtext">4. Which selects a row by its position number, not its label?</p>
+      <div class="qopts">
+        <button class="qopt">df.loc[]</button>
+        <button class="qopt">df.at[]</button>
+        <button class="qopt">df.iloc[]</button>
+        <button class="qopt">df.get[]</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="groupby splits the data into groups by city, then .sum() adds up 'revenue' within each group — similar to a pivot table subtotal.">
+      <p class="qtext">5. What does <code>df.groupby("city")["revenue"].sum()</code> do?</p>
+      <div class="qopts">
+        <button class="qopt">Sorts rows by city name</button>
+        <button class="qopt">Adds up revenue for each unique city</button>
+        <button class="qopt">Deletes the city column</button>
+        <button class="qopt">Counts total rows</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+  </div>
+
+  <div class="complete-wrap"><button class="complete-btn" onclick="markComplete(this,'pandas')">🎯 Mark Pandas as learned</button></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============ MATPLOTLIB ============ -->
+<!-- ============================================================ -->
+<section id="matplotlib" class="lib-section reveal" style="--accent:var(--matplotlib);">
+  <div class="lib-head">
+    <div class="lib-badge">plt</div>
+    <div>
+      <h2>Matplotlib</h2>
+      <div class="lib-tagline">The foundational library for drawing charts</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>What it actually is</h3>
+      <p>Matplotlib turns numbers into pictures — line graphs, bar charts, scatter plots. It's low-level and extremely flexible: you control every line, color, and label yourself. Almost every other Python plotting library (including Seaborn) is built on top of it.</p>
+    </div>
+    <div class="card analogy">
+      <h3>Real-world analogy</h3>
+      <p>Matplotlib is a <b>blank canvas and a full box of drawing tools</b>. Nothing is decided for you — you choose the axes, the colors, the title. Powerful, but you do the styling work yourself.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:8px;">Where it's used</h3>
+  <div class="where-used">
+    <span class="chip">Exploring trends in data</span>
+    <span class="chip">Reports &amp; dashboards</span>
+    <span class="chip">Scientific papers &amp; research plots</span>
+  </div>
+
+  <div class="sub-label">Setup — do this once</div>
+  <div class="syntax-box" style="margin-bottom:10px;">import matplotlib.pyplot as plt</div>
+
+  <div class="sub-label" style="margin-top:30px;">Chart types — definition, syntax &amp; example for each <span class="sticker">📊 click Run on every one</span></div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Line Plot</span></div>
+    <p class="def"><b>Definition:</b> a line plot connects data points with a straight line, in the order they're given. It's the standard chart for showing how a value <b>changes over time or over a sequence</b> — e.g. temperature across a week, or a stock price across a month.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">plt.plot(x, y)<br>plt.show()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [1]:</div>
+      <div class="cell-code"><pre>days = [<span class="str">"Mon"</span>,<span class="str">"Tue"</span>,<span class="str">"Wed"</span>,<span class="str">"Thu"</span>,<span class="str">"Fri"</span>]
+temp = [<span class="num">28</span>, <span class="num">30</span>, <span class="num">27</span>, <span class="num">31</span>, <span class="num">29</span>]
+
+plt.<span class="fn">plot</span>(days, temp, marker=<span class="str">"o"</span>)
+plt.<span class="fn">xlabel</span>(<span class="str">"Day"</span>); plt.<span class="fn">ylabel</span>(<span class="str">"°C"</span>)
+plt.<span class="fn">title</span>(<span class="str">"Weekly Temperature"</span>)
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[1]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <polyline points="110,220 220,160 330,240 440,110 550,180" fill="none" stroke="#E4572E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="110" cy="220" r="7" fill="#E4572E"/><circle cx="220" cy="160" r="7" fill="#E4572E"/><circle cx="330" cy="240" r="7" fill="#E4572E"/><circle cx="440" cy="110" r="7" fill="#E4572E"/><circle cx="550" cy="180" r="7" fill="#E4572E"/>
+            <text x="95" y="404" font-size="15" fill="#5B6484">Mon</text><text x="203" y="404" font-size="15" fill="#5B6484">Tue</text><text x="313" y="404" font-size="15" fill="#5B6484">Wed</text><text x="423" y="404" font-size="15" fill="#5B6484">Thu</text><text x="535" y="404" font-size="15" fill="#5B6484">Fri</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Day</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Temperature (°C)</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Bar Chart</span></div>
+    <p class="def"><b>Definition:</b> a bar chart uses rectangular bars to compare a value <b>across separate categories</b>. Longer bar = bigger value. Use it when your x-axis is a set of names, not a continuous scale.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">plt.bar(categories, values)<br>plt.show()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [2]:</div>
+      <div class="cell-code"><pre>cities = [<span class="str">"Pune"</span>, <span class="str">"Delhi"</span>, <span class="str">"Kochi"</span>]
+revenue = [<span class="num">500</span>, <span class="num">150</span>, <span class="num">260</span>]
+
+plt.<span class="fn">bar</span>(cities, revenue, color=<span class="str">"#E4572E"</span>)
+plt.<span class="fn">title</span>(<span class="str">"Revenue by City"</span>)
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[2]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="120" y="50" width="90" height="330" fill="#E4572E"/>
+            <rect x="310" y="280" width="90" height="100" fill="#E4572E" opacity="0.7"/>
+            <rect x="500" y="208" width="90" height="172" fill="#E4572E" opacity="0.85"/>
+            <text x="140" y="404" font-size="15" fill="#5B6484">Pune</text><text x="325" y="404" font-size="15" fill="#5B6484">Delhi</text><text x="513" y="404" font-size="15" fill="#5B6484">Kochi</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">City</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Revenue (₹ thousands)</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Scatter Plot</span></div>
+    <p class="def"><b>Definition:</b> a scatter plot places one dot per data point using two numeric values (x and y). It's the go-to chart for spotting a <b>relationship or pattern between two variables</b> — e.g. does studying more hours relate to higher marks?</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">plt.scatter(x, y)<br>plt.show()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [3]:</div>
+      <div class="cell-code"><pre>study_hrs = [<span class="num">1</span>, <span class="num">2</span>, <span class="num">3</span>, <span class="num">4</span>, <span class="num">5</span>, <span class="num">6</span>, <span class="num">7</span>, <span class="num">8</span>]
+marks     = [<span class="num">40</span>, <span class="num">48</span>, <span class="num">46</span>, <span class="num">60</span>, <span class="num">65</span>, <span class="num">72</span>, <span class="num">80</span>, <span class="num">90</span>]
+
+plt.<span class="fn">scatter</span>(study_hrs, marks, color=<span class="str">"#E4572E"</span>)
+plt.<span class="fn">xlabel</span>(<span class="str">"Hours studied"</span>); plt.<span class="fn">ylabel</span>(<span class="str">"Marks"</span>)
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[3]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <circle cx="110" cy="350" r="7" fill="#E4572E"/><circle cx="170" cy="308" r="7" fill="#E4572E"/><circle cx="230" cy="319" r="7" fill="#E4572E"/><circle cx="290" cy="246" r="7" fill="#E4572E"/><circle cx="350" cy="220" r="7" fill="#E4572E"/><circle cx="410" cy="184" r="7" fill="#E4572E"/><circle cx="470" cy="142" r="7" fill="#E4572E"/><circle cx="530" cy="90" r="7" fill="#E4572E"/>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Hours studied</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Histogram</span></div>
+    <p class="def"><b>Definition:</b> a histogram groups numbers into ranges ("bins") and shows how many values fall in each range as bars. Unlike a bar chart, it's for <b>one</b> numeric column, and it reveals the <b>distribution</b> — e.g. how marks are spread across a class.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">plt.hist(data, bins=5)<br>plt.show()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [4]:</div>
+      <div class="cell-code"><pre>marks = [<span class="num">45</span>, <span class="num">52</span>, <span class="num">58</span>, <span class="num">60</span>, <span class="num">63</span>, <span class="num">67</span>, <span class="num">70</span>, <span class="num">75</span>, <span class="num">82</span>, <span class="num">91</span>]
+
+plt.<span class="fn">hist</span>(marks, bins=<span class="num">5</span>, color=<span class="str">"#E4572E"</span>)
+plt.<span class="fn">xlabel</span>(<span class="str">"Marks range"</span>); plt.<span class="fn">ylabel</span>(<span class="str">"Number of students"</span>)
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[4]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="80" y="250" width="100" height="130" fill="#E4572E" opacity="0.6"/>
+            <rect x="190" y="156" width="100" height="224" fill="#E4572E" opacity="0.75"/>
+            <rect x="300" y="60" width="100" height="320" fill="#E4572E"/>
+            <rect x="410" y="188" width="100" height="192" fill="#E4572E" opacity="0.8"/>
+            <rect x="520" y="300" width="70" height="80" fill="#E4572E" opacity="0.5"/>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Marks range</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Number of students</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Pie Chart</span></div>
+    <p class="def"><b>Definition:</b> a pie chart splits a circle into slices, where each slice's size shows its <b>share of a whole</b> (percentages that add up to 100%). Best for a small number of categories — 3 to 6 — beyond that it gets hard to read.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">plt.pie(values, labels=names, autopct='%1.0f%%')<br>plt.show()</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [5]:</div>
+      <div class="cell-code"><pre>subjects = [<span class="str">"Math"</span>, <span class="str">"Science"</span>, <span class="str">"English"</span>]
+hours    = [<span class="num">5</span>, <span class="num">3</span>, <span class="num">2</span>]
+
+plt.<span class="fn">pie</span>(hours, labels=subjects, autopct=<span class="str">'%1.0f%%'</span>)
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[5]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <circle cx="300" cy="240" r="180" fill="#EADBC8"/>
+            <path d="M300,240 L300,60 A180,180 0 0,1 300,420 Z" fill="#E4572E"/>
+            <path d="M300,240 L300,420 A180,180 0 0,1 148.8,184.4 Z" fill="#F2A93B"/>
+            <path d="M300,240 L148.8,184.4 A180,180 0 0,1 300,60 Z" fill="#EADBC8"/>
+            <text x="330" y="180" font-size="18" fill="#fff" font-weight="600">50%</text>
+            <text x="280" y="345" font-size="18" fill="#fff" font-weight="600">30%</text>
+            <text x="195" y="215" font-size="18" fill="#6b5a45" font-weight="600">20%</text>
+            <circle cx="480" cy="120" r="9" fill="#E4572E"/><text x="498" y="126" font-size="15" fill="#16213E">Math</text>
+            <circle cx="480" cy="150" r="9" fill="#F2A93B"/><text x="498" y="156" font-size="15" fill="#16213E">Science</text>
+            <circle cx="480" cy="180" r="9" fill="#EADBC8"/><text x="498" y="186" font-size="15" fill="#16213E">English</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="tip"><b>Fresher tip:</b> always call <code>plt.show()</code> (or just let the last line of a notebook cell display the plot) — otherwise your chart may never actually appear.</div>
+
+  <div class="trivia"><span class="emoji">💡</span><div><b>Good to know:</b> Matplotlib was created by John D. Hunter in 2003 while he was analyzing brain-signal (EEG) data and wanted a free, Python-based alternative to MATLAB's plotting tools.</div></div>
+
+  <div class="quickcheck">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-face flip-front"><span class="lbl">QUICK CHECK</span><p>Which chart type would you use to compare sales across 5 cities?</p></div>
+        <div class="flip-face flip-back"><span class="lbl">ANSWER</span><p>A bar chart — <code>plt.bar()</code> — because you're comparing separate categories (cities), not showing change over time.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-block">
+    <h3 class="quiz-title">🧠 Quick Quiz — Matplotlib</h3>
+    <div class="quiz-q" data-answer="1" data-reason="plt.plot() connects points with a line — the standard choice for showing change over a sequence like time.">
+      <p class="qtext">1. Which function draws a line chart?</p>
+      <div class="qopts">
+        <button class="qopt">plt.bar()</button>
+        <button class="qopt">plt.plot()</button>
+        <button class="qopt">plt.pie()</button>
+        <button class="qopt">plt.hist()</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="0" data-reason="Bar charts compare distinct categories (e.g. cities); line charts suit continuous/sequential data, histograms show distribution, and pie charts show proportions of a whole.">
+      <p class="qtext">2. When should you use a bar chart instead of a line chart?</p>
+      <div class="qopts">
+        <button class="qopt">When comparing separate categories</button>
+        <button class="qopt">When showing change over continuous time</button>
+        <button class="qopt">When showing the distribution of one column</button>
+        <button class="qopt">When showing proportions of a whole</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="A histogram bins a single numeric column and counts how many values fall in each range — it doesn't need paired x,y values like a scatter plot does.">
+      <p class="qtext">3. What does <code>plt.hist()</code> need as input?</p>
+      <div class="qopts">
+        <button class="qopt">Two lists, x and y</button>
+        <button class="qopt">One list of numeric values</button>
+        <button class="qopt">Category names and matching counts</button>
+        <button class="qopt">A DataFrame only</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="These functions simply attach readable text labels to the x-axis and y-axis so viewers know exactly what's being measured.">
+      <p class="qtext">4. What is the purpose of <code>plt.xlabel()</code> and <code>plt.ylabel()</code>?</p>
+      <div class="qopts">
+        <button class="qopt">They change the chart's colors</button>
+        <button class="qopt">They label the horizontal and vertical axes</button>
+        <button class="qopt">They create a legend</button>
+        <button class="qopt">They save the figure to disk</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="2" data-reason="A pie chart is designed specifically to show how parts make up a whole (percentages adding to 100%) — exactly this budget-split scenario.">
+      <p class="qtext">5. Best chart for showing a budget split 50/30/20 across 3 categories?</p>
+      <div class="qopts">
+        <button class="qopt">Scatter plot</button>
+        <button class="qopt">Histogram</button>
+        <button class="qopt">Pie chart</button>
+        <button class="qopt">Line plot</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+  </div>
+
+  <div class="complete-wrap"><button class="complete-btn" onclick="markComplete(this,'matplotlib')">🎯 Mark Matplotlib as learned</button></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============ SEABORN ============ -->
+<!-- ============================================================ -->
+<section id="seaborn" class="lib-section reveal" style="--accent:var(--seaborn);">
+  <div class="lib-head">
+    <div class="lib-badge">sns</div>
+    <div>
+      <h2>Seaborn</h2>
+      <div class="lib-tagline">Beautiful statistical charts, built on Matplotlib</div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h3>What it actually is</h3>
+      <p>Seaborn sits on top of Matplotlib and adds smart defaults made for statistics: it understands pandas DataFrames directly, picks good colors automatically, and can compute things like averages and confidence intervals for you as it plots.</p>
+    </div>
+    <div class="card analogy">
+      <h3>Real-world analogy</h3>
+      <p>If Matplotlib is a blank canvas and paintbrush, Seaborn is an <b>interior designer</b> who walks into that same room and instantly makes it look professionally styled — using sensible defaults instead of asking you to choose everything.</p>
+    </div>
+  </div>
+
+  <h3 style="font-size:16px;margin-bottom:8px;">Where it's used</h3>
+  <div class="where-used">
+    <span class="chip">Exploring relationships between variables</span>
+    <span class="chip">Correlation heatmaps</span>
+    <span class="chip">Comparing distributions across groups</span>
+  </div>
+
+  <div class="sub-label">Setup — do this once</div>
+  <div class="syntax-box" style="margin-bottom:10px;">import seaborn as sns</div>
+
+  <div class="sub-label" style="margin-top:30px;">Chart types — definition, syntax &amp; example for each <span class="sticker">✨ styled automatically</span></div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Scatter Plot</span></div>
+    <p class="def"><b>Definition:</b> same idea as Matplotlib's scatter plot — one dot per data point — except it reads column names straight from a DataFrame, and <code>hue</code> can auto-color the dots by a third category, like "passed / failed", for free.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.scatterplot(data=df, x="col1", y="col2", hue="category")</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [1]:</div>
+      <div class="cell-code"><pre><span class="com"># works directly with a DataFrame — just name the columns</span>
+sns.<span class="fn">scatterplot</span>(data=df, x=<span class="str">"study_hrs"</span>, y=<span class="str">"marks"</span>, hue=<span class="str">"passed"</span>)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[1]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <circle cx="110" cy="330" r="7" fill="#F2A93B"/><circle cx="180" cy="300" r="7" fill="#F2A93B"/><circle cx="250" cy="270" r="7" fill="#F2A93B"/>
+            <circle cx="330" cy="200" r="7" fill="#6C5B7B"/><circle cx="400" cy="160" r="7" fill="#6C5B7B"/><circle cx="470" cy="120" r="7" fill="#6C5B7B"/><circle cx="540" cy="80" r="7" fill="#6C5B7B"/>
+            <circle cx="500" cy="410" r="9" fill="#F2A93B"/><text x="514" y="416" font-size="15" fill="#16213E">failed</text>
+            <circle cx="500" cy="435" r="9" fill="#6C5B7B"/><text x="514" y="441" font-size="15" fill="#16213E">passed</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Study Hours</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Heatmap</span></div>
+    <p class="def"><b>Definition:</b> a heatmap colors every cell of a grid of numbers based on its value — darker or brighter usually means a bigger number. It's most often used to visualize a <b>correlation matrix</b>, so you can spot which columns move together at a glance.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.heatmap(data, annot=True, cmap="Purples")</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [2]:</div>
+      <div class="cell-code"><pre><span class="com"># darker = stronger relationship</span>
+sns.<span class="fn">heatmap</span>(df.<span class="fn">corr</span>(), annot=<span class="kw">True</span>, cmap=<span class="str">"Purples"</span>)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[2]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <rect x="180" y="60" width="140" height="140" fill="#6C5B7B"/><rect x="320" y="60" width="140" height="140" fill="#c9bfd6"/>
+            <rect x="180" y="200" width="140" height="140" fill="#c9bfd6"/><rect x="320" y="200" width="140" height="140" fill="#6C5B7B"/>
+            <text x="235" y="138" font-size="20" fill="#fff">1.0</text><text x="375" y="138" font-size="20" fill="#3a2f45">0.6</text>
+            <text x="235" y="278" font-size="20" fill="#3a2f45">0.6</text><text x="375" y="278" font-size="20" fill="#fff">1.0</text>
+            <text x="250" y="45" font-size="15" fill="#16213E" text-anchor="middle">study_hrs</text>
+            <text x="390" y="45" font-size="15" fill="#16213E" text-anchor="middle">marks</text>
+            <text x="175" y="135" font-size="15" fill="#16213E" text-anchor="end">study_hrs</text>
+            <text x="175" y="275" font-size="15" fill="#16213E" text-anchor="end">marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Box Plot</span></div>
+    <p class="def"><b>Definition:</b> a box plot summarizes a group of numbers in one shape: the box covers the middle 50% of values, the line inside is the median, and the "whiskers" extend to the typical range — dots beyond them are outliers. Great for comparing spread across groups.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.boxplot(data=df, x="category", y="value")</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [3]:</div>
+      <div class="cell-code"><pre><span class="com"># compare spread of marks across two sections</span>
+sns.<span class="fn">boxplot</span>(data=df, x=<span class="str">"section"</span>, y=<span class="str">"marks"</span>)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[3]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="160" y="135" width="90" height="120" fill="none" stroke="#6C5B7B" stroke-width="3"/>
+            <line x1="160" y1="195" x2="250" y2="195" stroke="#6C5B7B" stroke-width="3"/>
+            <line x1="205" y1="60" x2="205" y2="135" stroke="#6C5B7B" stroke-width="2"/><line x1="205" y1="255" x2="205" y2="330" stroke="#6C5B7B" stroke-width="2"/>
+            <rect x="400" y="165" width="90" height="165" fill="none" stroke="#6C5B7B" stroke-width="3"/>
+            <line x1="400" y1="240" x2="490" y2="240" stroke="#6C5B7B" stroke-width="3"/>
+            <line x1="445" y1="90" x2="445" y2="165" stroke="#6C5B7B" stroke-width="2"/><line x1="445" y1="330" x2="445" y2="360" stroke="#6C5B7B" stroke-width="2"/>
+            <text x="185" y="404" font-size="15" fill="#5B6484">Section A</text><text x="425" y="404" font-size="15" fill="#5B6484">Section B</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Section</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Violin Plot</span></div>
+    <p class="def"><b>Definition:</b> a mix of a box plot and a distribution curve — the width of the "violin" at each height shows how many values sit around there. It shows everything a box plot does, plus the actual shape of the spread.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.violinplot(data=df, x="category", y="value")</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [4]:</div>
+      <div class="cell-code"><pre>sns.<span class="fn">violinplot</span>(data=df, x=<span class="str">"section"</span>, y=<span class="str">"marks"</span>)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[4]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <path d="M205,60 C145,135 145,270 205,360 C265,270 265,135 205,60 Z" fill="#6C5B7B" opacity="0.7"/>
+            <path d="M445,90 C395,165 395,285 445,375 C495,285 495,165 445,90 Z" fill="#6C5B7B" opacity="0.7"/>
+            <line x1="205" y1="90" x2="205" y2="330" stroke="#fff" stroke-width="3"/>
+            <line x1="445" y1="120" x2="445" y2="345" stroke="#fff" stroke-width="3"/>
+            <text x="185" y="404" font-size="15" fill="#5B6484">Section A</text><text x="425" y="404" font-size="15" fill="#5B6484">Section B</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Section</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Count Plot</span></div>
+    <p class="def"><b>Definition:</b> automatically counts how many rows fall into each category and draws a bar for each — you don't even need to calculate the counts yourself first, unlike a normal bar chart.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.countplot(data=df, x="category")</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [5]:</div>
+      <div class="cell-code"><pre><span class="com"># counts rows per section automatically</span>
+sns.<span class="fn">countplot</span>(data=df, x=<span class="str">"section"</span>)</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[5]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <line x1="70" y1="30" x2="70" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <line x1="70" y1="380" x2="600" y2="380" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="150" y="140" width="100" height="240" fill="#6C5B7B"/>
+            <rect x="380" y="215" width="100" height="165" fill="#6C5B7B" opacity="0.75"/>
+            <text x="180" y="404" font-size="15" fill="#5B6484">Section A</text><text x="410" y="404" font-size="15" fill="#5B6484">Section B</text>
+            <text x="335" y="452" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle">Section</text>
+            <text x="25" y="205" font-size="17" font-weight="600" fill="#16213E" text-anchor="middle" transform="rotate(-90 25 205)">Count</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="method-block">
+    <div class="method-top"><span class="method-name">Pair Plot</span></div>
+    <p class="def"><b>Definition:</b> automatically plots every numeric column in a DataFrame against every other one, arranged in a grid — a fast way to scan an entire dataset for relationships in a single command, without writing a chart for each pair yourself.</p>
+    <div class="syntax-label">Syntax</div>
+    <div class="syntax-box">sns.pairplot(df)</div>
+    <div class="cell">
+      <div class="cell-row"><div class="cell-io">In [6]:</div>
+      <div class="cell-code"><pre>sns.<span class="fn">pairplot</span>(df)
+plt.<span class="fn">tight_layout</span>(pad=<span class="num">2.0</span>)  <span class="com"># stops axis labels getting cut off at the edges</span>
+plt.<span class="fn">show</span>()</pre></div></div>
+      <div class="cell-foot"><button class="run-btn" onclick="runCell(this)">▶ Run</button></div>
+      <div class="out-wrap"><div class="cell-out cell-row"><div class="cell-io">Out[6]:</div>
+        <div class="out-content">
+          <svg viewBox="0 0 640 480" width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+            <rect x="0" y="0" width="640" height="480" fill="#ffffff"/>
+            <rect x="90" y="40" width="247" height="182" fill="none" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="352" y="40" width="247" height="182" fill="none" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="90" y="237" width="247" height="182" fill="none" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="352" y="237" width="247" height="182" fill="none" stroke="#cbd2e3" stroke-width="2"/>
+            <rect x="110" y="182" width="40" height="40" fill="#6C5B7B"/><rect x="160" y="132" width="40" height="90" fill="#6C5B7B"/><rect x="210" y="62" width="40" height="160" fill="#6C5B7B"/><rect x="260" y="152" width="40" height="70" fill="#6C5B7B"/>
+            <circle cx="370" cy="200" r="6" fill="#6C5B7B"/><circle cx="410" cy="160" r="6" fill="#6C5B7B"/><circle cx="450" cy="110" r="6" fill="#6C5B7B"/><circle cx="490" cy="65" r="6" fill="#6C5B7B"/>
+            <circle cx="110" cy="400" r="6" fill="#6C5B7B"/><circle cx="160" cy="370" r="6" fill="#6C5B7B"/><circle cx="210" cy="340" r="6" fill="#6C5B7B"/><circle cx="260" cy="270" r="6" fill="#6C5B7B"/>
+            <rect x="372" y="369" width="40" height="50" fill="#6C5B7B"/><rect x="412" y="319" width="40" height="100" fill="#6C5B7B"/><rect x="452" y="249" width="40" height="170" fill="#6C5B7B"/><rect x="492" y="339" width="40" height="80" fill="#6C5B7B"/>
+            <text x="213" y="452" font-size="14" fill="#16213E" text-anchor="middle">study_hrs</text>
+            <text x="475" y="452" font-size="14" fill="#16213E" text-anchor="middle">marks</text>
+            <text x="24" y="131" font-size="14" fill="#16213E" text-anchor="middle" transform="rotate(-90 24 131)">study_hrs</text>
+            <text x="24" y="328" font-size="14" fill="#16213E" text-anchor="middle" transform="rotate(-90 24 328)">marks</text>
+          </svg>
+        </div>
+      </div></div>
+    </div>
+    <div class="note"><b>Note:</b> if a chart's bottom or right-hand labels look cramped or clipped, that's almost always a spacing issue, not a data issue. Call <code>plt.tight_layout(pad=2.0)</code> right before <code>plt.show()</code>, or pass <code>bbox_inches='tight'</code> to <code>plt.savefig()</code> when exporting a chart to a file — both re-fit the figure so every axis label stays fully visible.</div>
+  </div>
+
+  <div class="tip"><b>Fresher tip:</b> if your x-axis / y-axis are column names from a DataFrame, reach for Seaborn first — it usually takes one line where Matplotlib would take five.</div>
+
+  <div class="trivia"><span class="emoji">💡</span><div><b>Good to know:</b> Seaborn is named after Sam Seaborn, a character from the TV show <i>The West Wing</i> — a small nod from its creator, Michael Waskom.</div></div>
+
+  <div class="quickcheck">
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-face flip-front"><span class="lbl">QUICK CHECK</span><p>Is Seaborn a replacement for Matplotlib, or built on it?</p></div>
+        <div class="flip-face flip-back"><span class="lbl">ANSWER</span><p>Built on it. Seaborn generates Matplotlib figures underneath — you can still use Matplotlib functions like <code>plt.title()</code> to customize a Seaborn plot.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="quiz-block">
+    <h3 class="quiz-title">🧠 Quick Quiz — Seaborn</h3>
+    <div class="quiz-q" data-answer="1" data-reason="Seaborn generates its charts using Matplotlib underneath, adding statistical smarts and better default styling on top of it.">
+      <p class="qtext">1. What is Seaborn built on top of?</p>
+      <div class="qopts">
+        <button class="qopt">NumPy only</button>
+        <button class="qopt">Matplotlib</button>
+        <button class="qopt">Pandas only</button>
+        <button class="qopt">It's fully independent</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="0" data-reason="sns.heatmap() colors a grid of numeric values — commonly df.corr() — so relationships between columns are visible at a glance.">
+      <p class="qtext">2. Which Seaborn function draws a correlation heatmap?</p>
+      <div class="qopts">
+        <button class="qopt">sns.heatmap()</button>
+        <button class="qopt">sns.scatterplot()</button>
+        <button class="qopt">sns.pairplot()</button>
+        <button class="qopt">sns.lineplot()</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason='hue="column" automatically assigns a different color to each category in that column, letting you compare groups within one chart.'>
+      <p class="qtext">3. What does the <code>hue</code> parameter do in a Seaborn plot?</p>
+      <div class="qopts">
+        <button class="qopt">Changes the chart's title</button>
+        <button class="qopt">Colors data points by a third categorical column</button>
+        <button class="qopt">Sets the figure size</button>
+        <button class="qopt">Removes the legend</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="A violin plot combines a box plot's summary stats with a mirrored distribution curve, showing more detail than a box plot alone.">
+      <p class="qtext">4. Which chart shows both summary statistics AND the shape of the distribution?</p>
+      <div class="qopts">
+        <button class="qopt">Bar chart</button>
+        <button class="qopt">Violin plot</button>
+        <button class="qopt">Count plot</button>
+        <button class="qopt">Pair plot</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+    <div class="quiz-q" data-answer="1" data-reason="pairplot automatically builds a full grid comparing each numeric column with every other column — useful for scanning a whole dataset for relationships fast.">
+      <p class="qtext">5. What does <code>sns.pairplot(df)</code> do?</p>
+      <div class="qopts">
+        <button class="qopt">Plots only two chosen columns</button>
+        <button class="qopt">Plots every numeric column against every other one, in a grid</button>
+        <button class="qopt">Removes duplicate rows</button>
+        <button class="qopt">Merges two DataFrames</button>
+      </div>
+      <div class="qfeedback"></div>
+    </div>
+  </div>
+
+  <div class="complete-wrap"><button class="complete-btn" onclick="markComplete(this,'seaborn')">🎯 Mark Seaborn as learned</button></div>
+</section>
+
+<!-- ============================================================ -->
+<!-- ============ COMPARE / CHEAT SHEET ============ -->
+<!-- ============================================================ -->
+<section id="compare" class="reveal">
+  <div class="intro" style="padding-top:0;">
+    <h2>Which one do I actually need?</h2>
+    <p>A one-glance cheat sheet — bookmark this part.</p>
+  </div>
+  <table class="compare-table">
+    <tr><th>Library</th><th>Best for</th><th>Think of it as</th></tr>
+    <tr><td><span class="swatch" style="background:var(--numpy);"></span>NumPy</td><td>Fast math on numbers &amp; grids</td><td>The calculator</td></tr>
+    <tr><td><span class="swatch" style="background:var(--pandas);"></span>Pandas</td><td>Organizing &amp; analyzing tabular data</td><td>The spreadsheet</td></tr>
+    <tr><td><span class="swatch" style="background:var(--matplotlib);"></span>Matplotlib</td><td>Full-control custom charts</td><td>The blank canvas</td></tr>
+    <tr><td><span class="swatch" style="background:var(--seaborn);"></span>Seaborn</td><td>Quick, good-looking statistical charts</td><td>The stylist</td></tr>
+  </table>
+  <div class="tip" style="margin-top:28px;"><b>Typical order of use in a real project:</b> load data with Pandas → clean/compute with NumPy under the hood → explore visually with Seaborn → polish the final chart with Matplotlib.</div>
+</section>
+
+<footer>
+  <div class="fmark">import notes;</div>
+  <p>Study notes for freshers — built as a quick-reference notebook, not official documentation.<br>Always cross-check syntax against the official docs before an interview or exam.</p>
+</footer>
+
+<button id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+</body>
+</html>
