@@ -1,4 +1,4 @@
-### Prompt -1
+## Prompt -1 
 
 task : 
 
@@ -15,7 +15,7 @@ goal :
 2. refer multiple related websites for reference.
 
 3. website should look appealing that should interest the reader to focus and make them stay.
-
+---
 key expectation :
 
 1. proper definition of what it is , where it is used , types, method and usage , syntax with small understandable example  using a simple real-world analogy.
@@ -23,7 +23,7 @@ key expectation :
 2. notes should be understandable even by a grade 12 student .
 
 3.  before presenting the result optimize the code 
-
+---
 user : 
 
 complete fresher which no prior knowledge of python libraries .
@@ -38,27 +38,51 @@ after generation of proper structured,
 
 3. use 3 to 4 colors and keep the user interface standard
 
-### Prompt -2
+---
+
+## Prompt -2
 
 Additional Information :
 
-- example:
+ 1. Example:
 
-Empty Cells
+ Empty Cells
+   
 Empty cells can potentially give you a wrong result when you analyze data.
+
 Remove Rows
+
 One way to deal with empty cells is to remove rows that contain empty cells.
 This is usually OK, since data sets can be very big, and removing a few rows will not have a big impact on the result.
-Example
+
+2. Example:
+
 Return a new Data Frame with no empty cells: import pandas as pd
+
 df = pd.read_csv('data.csv')
+
 new_df = df.dropna()
-print(new_df.to_string()) Note: By default, the `dropna()` method returns a new DataFrame, and will not change the original.
+
+print(new_df.to_string()) 
+
+**Note: By default, the `dropna()` method returns a new DataFrame, and will not change the original.**
+
 If you want to change the original DataFrame, use the `inplace = True` argument:
+
+3. :
+
 Example Remove all rows with NULL values: import pandas as pd
+
 df = pd.read_csv('data.csv')
+
 df.dropna(inplace = True)
-print(df.to_string()) Note: Now, the `dropna(inplace = True)` will NOT return a new DataFrame, but it will remove all rows containing NULL values from the original DataFrame.
+
+print(df.to_string()) 
+
+**Note: Now, the `dropna(inplace = True)` will NOT return a new DataFrame, but it will remove all rows containing NULL values from the original DataFrame.**
+
+---
+
 instructions:
 
 1. include some additional informataion related to these python libraries.
@@ -72,9 +96,11 @@ expected output:
 3. include graphical representation of chart with example for each types or method when required in topics like matplotlib and reborn .
 4. explain each chart in detail with definition , syntax , example with graph
 
-### Prompt -3
+---
 
-areas to focus :
+## Prompt -3
+
+Areas to focus :
 
 1. graph size should be 640 x 480 pixels
 2. graph should contain x , y label name mentioned .
@@ -93,7 +119,9 @@ instruction:
    1. When the page loads, the cards should stagger into view from the bottom with a spring easing.
    2. On mouse hover, the card should slightly lift up (translateY), cast a soft glowing drop-shadow matching the card's theme color, and a small decorative icon inside the card should gently bounce. Make the JS interactions smooth and ensure the hover state feels lightweight.
 
-### Prompt -4
+---
+
+## Prompt -4
 
 "I am building a web interface for my Data Analytics and Python notes, but I am running into two visual bugs that I need you to fix, optimize, and internally test before giving me the final code.
 Issue 1: The UI (Frontend) The landing page currently has a working navbar, but the main hero section is completely empty.
@@ -104,6 +132,8 @@ Issue 2: The Data Visualizations (Backend/Python) The Seaborn/Matplotlib pairplo
 
 * Task: Implement `plt.tight_layout(pad=2.0)` or `bbox_inches='tight'` to ensure all axis labels and subplots are fully visible. Make sure the figure size is appropriately scaled.
 
+---
+
 Execution Instructions:
 
 1. Carefully review my attached code.
@@ -111,3 +141,5 @@ Execution Instructions:
 3. Perform a thorough internal dry-run of the code logic to verify that these changes do not break any existing functionality or CSS styles.
 4. Optimize the code for performance and readability.
 5. Output the final, production-ready code with absolutely no errors, glitches, or placeholders. Briefly explain the exact padding/layout properties you changed."
+
+---
