@@ -6,7 +6,7 @@
 
 --- 
 
-## 📌 About This Repository
+## 📌 About This Repository  
 
 **Prompt to Product** is a growing collection of websites and digital products created through **prompt engineering and AI-assisted development**.
 
