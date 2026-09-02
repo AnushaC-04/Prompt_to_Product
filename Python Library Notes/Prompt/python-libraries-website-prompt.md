@@ -1,7 +1,7 @@
 ## Prompt -1 
 
 task : 
-
+  
 to generate a website - python library study notes for fresher entry level
 
 role :
